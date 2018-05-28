@@ -14,15 +14,15 @@ You can use this for categorizing any text content into any arbitrary set of **c
 ## Installing
 
 ```
-npm install bayes
+npm install --save bayes
 ```
 
 ## Usage
 
 ```javascript
-var bayes = require('bayes')
+let bayes = require('bayes')
 
-var classifier = bayes()
+let classifier = bayes()
 
 // teach it positive phrases
 
@@ -39,16 +39,16 @@ classifier.categorize('awesome, cool, amazing!! Yay.')
 // => 'positive'
 
 // serialize the classifier's state as a JSON string.
-var stateJson = classifier.toJson()
+let stateJson = classifier.toJson()
 
 // load the classifier back from its JSON representation.
-var revivedClassifier = bayes.fromJson(stateJson)
+let revivedClassifier = bayes.fromJson(stateJson)
 
 ```
 
 ## API
 
-### `var classifier = bayes([options])`
+### `let classifier = bayes([options])`
 
 Returns an instance of a Naive-Bayes Classifier.
 
@@ -57,9 +57,9 @@ Pass in an optional `options` object to configure the instance. If you specify a
 Eg.
 
 ```js
-var classifier = bayes({
-    tokenizer: function (text) { return text.split(' ') }
-})
+let classifier = bayes({
+    tokenizer: (text) => text.split(' ')
+});
 ```
 
 ### `classifier.learn(text, category)`
@@ -74,7 +74,7 @@ Returns the `category` it thinks `text` belongs to. Its judgement is based on wh
 
 Returns the JSON representation of a classifier.
 
-### `var classifier = bayes.fromJson(jsonStr)`
+### `let classifier = bayes.fromJson(jsonStr)`
 
 Returns a classifier instance from the JSON representation. Use this with the JSON representation obtained from `classifier.toJson()`
 
